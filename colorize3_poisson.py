@@ -1,4 +1,5 @@
 import cv2 as cv
+import cv2
 import numpy as np 
 import matplotlib.pyplot as plt 
 import scipy.interpolate as si
@@ -51,7 +52,7 @@ class FontColor(object):
         # convert color-means from RGB to LAB for better nearest neighbour
         # computations:
         self.colorsLAB = np.r_[self.colorsRGB[:,0:3], self.colorsRGB[:,6:9]].astype('uint8')
-        self.colorsLAB = np.squeeze(cv.cvtColor(self.colorsLAB[None,:,:],cv.cv.CV_RGB2Lab))
+        self.colorsLAB = np.squeeze(cv.cvtColor(self.colorsLAB[None,:,:],cv2.COLOR_RGB2Lab))
 
 
     def sample_normal(self, col_mean, col_std):
