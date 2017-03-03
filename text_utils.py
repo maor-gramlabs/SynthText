@@ -17,7 +17,7 @@ from common import *
 
 
 def sample_weighted(p_dict):
-    ps = p_dict.keys()
+    ps = list(p_dict.keys())
     return p_dict[np.random.choice(ps,p=ps)]
 
 def move_bb(bbs, t):
