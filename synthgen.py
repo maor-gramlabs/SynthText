@@ -365,6 +365,7 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
 class RendererV3(object):
 
     def __init__(self, data_dir, max_time=None):
+        #data_dir = bytes(data_dir, 'utf-8')
         self.text_renderer = tu.RenderFont(data_dir)
         self.colorizer = Colorize(data_dir)
         #self.colorizerV2 = colorV2.Colorize(data_dir)

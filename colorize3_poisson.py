@@ -44,8 +44,8 @@ class Layer(object):
 class FontColor(object):
 
     def __init__(self, col_file):
-        with open(col_file,'r') as f:
-            self.colorsRGB = cp.load(f)
+        with open(col_file,'rb') as f:
+            self.colorsRGB = cp.load(f,encoding='latin1')
         self.ncol = self.colorsRGB.shape[0]
 
         # convert color-means from RGB to LAB for better nearest neighbour
