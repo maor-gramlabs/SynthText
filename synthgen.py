@@ -349,7 +349,7 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
     plt.close(fignum)
     plt.figure(fignum)
     plt.imshow(text_im)
-    plt.hold(True)
+    #plt.hold(True)
     H,W = text_im.shape[:2]
     for i in range(len(bb_list)):
         bbs = bb_list[i]
@@ -689,5 +689,5 @@ class RendererV3(object):
                     viz_masks(2,img,seg,depth,regions['label'])
                     # viz_regions(rgb.copy(),xyz,seg,regions['coeff'],regions['label'])
                     if i < ninstance-1:
-                        raw_input(colorize(Color.BLUE,'continue?',True))                    
+                        input(colorize(Color.BLUE,'continue?',True))
         return res
