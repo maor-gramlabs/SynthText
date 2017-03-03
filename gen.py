@@ -70,7 +70,7 @@ def add_res_to_db(imgname,res,db):
     db['data'].create_dataset(dname,data=res[i]['img'])
     db['data'][dname].attrs['charBB'] = res[i]['charBB']
     db['data'][dname].attrs['wordBB'] = res[i]['wordBB']        
-    db['data'][dname].attrs['txt'] = res[i]['txt']
+    db['data'][dname].attrs['txt'] = np.array(res[i]['txt']).astype('|S9')
 
 
 def main(viz=False):
