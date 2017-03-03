@@ -41,7 +41,7 @@ def get_data():
   if not osp.exists(DB_FNAME):
     try:
       colorprint(Color.BLUE,'\tdownloading data (56 M) from: '+DATA_URL,bold=True)
-      print
+      print()
       sys.stdout.flush()
       out_fname = 'data.tar.gz'
       wget.download(DATA_URL,out=out_fname)
@@ -52,7 +52,7 @@ def get_data():
       colorprint(Color.BLUE,'\n\tdata saved at:'+DB_FNAME,bold=True)
       sys.stdout.flush()
     except:
-      print colorize(Color.RED,'Data not found and have problems downloading.',bold=True)
+      print(colorize(Color.RED,'Data not found and have problems downloading.',bold=True))
       sys.stdout.flush()
       sys.exit(-1)
   # open the h5 file and return:
@@ -75,14 +75,14 @@ def add_res_to_db(imgname,res,db):
 
 def main(viz=False):
   # open databases:
-  print colorize(Color.BLUE,'getting data..',bold=True)
+  print(colorize(Color.BLUE,'getting data..',bold=True))
   db = get_data()
-  print colorize(Color.BLUE,'\t-> done',bold=True)
+  print(colorize(Color.BLUE,'\t-> done',bold=True))
 
   # open the output h5 file:
   out_db = h5py.File(OUT_FILE,'w')
   out_db.create_group('/data')
-  print colorize(Color.GREEN,'Storing the output in: '+OUT_FILE, bold=True)
+  print(colorize(Color.GREEN,'Storing the output in: '+OUT_FILE, bold=True))
 
   # get the names of the image files in the dataset:
   imnames = sorted(db['image'].keys())
@@ -114,7 +114,7 @@ def main(viz=False):
       img = np.array(img.resize(sz,Image.ANTIALIAS))
       seg = np.array(Image.fromarray(seg).resize(sz,Image.NEAREST))
 
-      print colorize(Color.RED,'%d of %d'%(i,end_idx-1), bold=True)
+      print(colorize(Color.RED,'%d of %d'%(i,end_idx-1), bold=True))
       res = RV3.render_text(img,depth,seg,area,label,
                             ninstance=INSTANCE_PER_IMAGE,viz=viz)
       if len(res) > 0:
@@ -126,7 +126,7 @@ def main(viz=False):
           break
     except:
       traceback.print_exc()
-      print colorize(Color.GREEN,'>>>> CONTINUING....', bold=True)
+      print(colorize(Color.GREEN,'>>>> CONTINUING....', bold=True))
       continue
   db.close()
   out_db.close()

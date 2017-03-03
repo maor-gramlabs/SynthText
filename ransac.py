@@ -43,7 +43,7 @@ def fit_plane_ransac(pts, neighbors=None,z_pos=None, dist_inlier=0.05,
             models.append(m)
 
     if models == []:
-        print "RANSAC plane fitting failed!"
+        print("RANSAC plane fitting failed!")
         return #None
     else: #refit the model to inliers:
         ninlier = np.array(ninlier)

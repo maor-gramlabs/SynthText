@@ -629,7 +629,7 @@ class RendererV3(object):
         for i in xrange(ninstance):
             place_masks = copy.deepcopy(regions['place_mask'])
 
-            print colorize(Color.CYAN, " ** instance # : %d"%i)
+            print(colorize(Color.CYAN, " ** instance # : %d"%i))
 
             idict = {'img':[], 'charBB':None, 'wordBB':None, 'txt':None}
 
@@ -660,7 +660,7 @@ class RendererV3(object):
                                                              regions['homography'][ireg],
                                                              regions['homography_inv'][ireg])
                 except TimeoutException, msg:
-                    print msg
+                    print(msg)
                     continue
                 except:
                     traceback.print_exc()

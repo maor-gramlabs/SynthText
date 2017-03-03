@@ -23,7 +23,7 @@ FS = FontState()
 #plt.figure()
 #plt.hold(True)
 for i in xrange(len(FS.fonts)):
-	print i
+	print(i)
 	font = freetype.Font(FS.fonts[i], size=12)
 	h = []
 	for y in ys:
