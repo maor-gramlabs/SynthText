@@ -5,7 +5,7 @@ import scipy.io as sio
 import os.path as osp
 import random, os
 import cv2
-import cPickle as cp
+import _pickle as cp
 import scipy.signal as ssig
 import scipy.stats as sstat
 import pygame, pygame.locals
