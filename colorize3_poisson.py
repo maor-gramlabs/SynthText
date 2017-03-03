@@ -426,7 +426,7 @@ class Colorize(object):
 
         # initialize the placement order:
         if place_order is None:
-            place_order = np.array(xrange(len(text_arr)))
+            place_order = np.array(range(len(text_arr)))
 
         rendered = []
         for i in place_order[::-1]:

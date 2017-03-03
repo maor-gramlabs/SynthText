@@ -30,7 +30,7 @@ def fit_plane_ransac(pts, neighbors=None,z_pos=None, dist_inlier=0.05,
     """
     n,_ = pts.shape
     ninlier,models = [],[]
-    for i in xrange(max_iter):
+    for i in range(max_iter):
         if neighbors is None:
             p = pts[np.random.choice(pts.shape[0],nsample,replace=False),:]
         else:

@@ -65,7 +65,7 @@ def add_res_to_db(imgname,res,db):
   and other metadata to the dataset.
   """
   ninstance = len(res)
-  for i in xrange(ninstance):
+  for i in range(ninstance):
     dname = "%s_%d"%(imgname, i)
     db['data'].create_dataset(dname,data=res[i]['img'])
     db['data'][dname].attrs['charBB'] = res[i]['charBB']
@@ -93,7 +93,7 @@ def main(viz=False):
   start_idx,end_idx = 0,min(NUM_IMG, N)
 
   RV3 = RendererV3(DATA_PATH,max_time=SECS_PER_IMG)
-  for i in xrange(start_idx,end_idx):
+  for i in range(start_idx,end_idx):
     imname = imnames[i]
     try:
       # get the image:
