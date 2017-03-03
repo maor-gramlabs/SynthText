@@ -21,10 +21,10 @@ def viz_textbb(text_im, charBB_list, wordBB, alpha=1.0):
     charBB_list : list of 2x4xn_i bounding-box matrices
     wordBB : 2x4xm matrix of word coordinates
     """
-    plt.close(1)
-    plt.figure(1)
+    #plt.close()
+    plt.figure()
     plt.imshow(text_im)
-    plt.hold(True)
+    #plt.hold(True)
     H,W = text_im.shape[:2]
 
     # plot the character-BB:
@@ -66,7 +66,7 @@ def main(db_fname):
         print("  ** no. of words : ", colorize(Color.YELLOW, wordBB.shape[-1]))
         print("  ** text         : ", colorize(Color.GREEN, txt))
 
-        if 'q' in raw_input("next? ('q' to exit) : "):
+        if 'q' in input("next? ('q' to exit) : "):
             break
     db.close()
 

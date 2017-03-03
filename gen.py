@@ -121,9 +121,9 @@ def main(viz=False):
         # non-empty : successful in placing text:
         add_res_to_db(imname,res,out_db)
       # visualize the output:
-      if viz:
-        if 'q' in input(colorize(Color.RED,'continue? (enter to continue, q to exit): ',True)):
-          break
+      # if viz:
+      #   if 'q' in input(colorize(Color.RED,'continue? (enter to continue, q to exit): ',True)):
+      #     break
     except:
       traceback.print_exc()
       print(colorize(Color.GREEN,'>>>> CONTINUING....', bold=True))

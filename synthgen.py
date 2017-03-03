@@ -315,8 +315,8 @@ def viz_masks(fignum,rgb,seg,depth,label):
     # scipy.misc.imsave('txt.png', rgb)
     # scipy.misc.imsave('reg.png', img)
 
-    plt.close(fignum)
-    plt.figure(fignum)
+    #plt.close(fignum)
+    plt.figure()
     ims = [rgb,mim,depth,img]
     for i in range(len(ims)):
         plt.subplot(2,2,i+1)
@@ -346,8 +346,8 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
     text_im : image containing text
     bb_list : list of 2x4xn_i boundinb-box matrices
     """
-    plt.close(fignum)
-    plt.figure(fignum)
+    #plt.close(fignum)
+    plt.figure()
     plt.imshow(text_im)
     #plt.hold(True)
     H,W = text_im.shape[:2]
@@ -688,6 +688,6 @@ class RendererV3(object):
                     viz_textbb(1,img, [idict['wordBB']], alpha=1.0)
                     viz_masks(2,img,seg,depth,regions['label'])
                     # viz_regions(rgb.copy(),xyz,seg,regions['coeff'],regions['label'])
-                    if i < ninstance-1:
-                        input(colorize(Color.BLUE,'continue?',True))
+                    # if i < ninstance-1:
+                    #     input(colorize(Color.BLUE,'continue?',True))
         return res
