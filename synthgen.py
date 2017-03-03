@@ -659,8 +659,8 @@ class RendererV3(object):
                             txt_render_res = self.place_text(img,place_masks[ireg],
                                                              regions['homography'][ireg],
                                                              regions['homography_inv'][ireg])
-                except TimeoutException, msg:
-                    print(msg)
+                except TimeoutException as e:
+                    print(e)
                     continue
                 except:
                     traceback.print_exc()
