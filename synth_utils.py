@@ -247,6 +247,8 @@ def rot3d(v1,v2):
     v2 /= np.linalg.norm(v2)
     v3 = np.cross(v1,v2)
     s = np.linalg.norm(v3)
+    if s == 0:
+        return np.eye(3)
     c = v1.dot(v2)
     Vx = ssc(v3)
     return np.eye(3)+s*Vx+(1-c)*Vx.dot(Vx)
