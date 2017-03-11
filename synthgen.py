@@ -349,6 +349,8 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
     #plt.close(fignum)
     plt.figure()
     plt.imshow(text_im)
+    plt.figure()
+    plt.imshow(text_im)
     #plt.hold(True)
     H,W = text_im.shape[:2]
     for i in range(len(bb_list)):
