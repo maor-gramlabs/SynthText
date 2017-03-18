@@ -287,7 +287,7 @@ def get_text_placement_mask(xyz,mask,plane,pad=2,viz=False):
 
     return place_mask,H,Hinv
 
-def viz_masks(fignum,rgb,seg,depth,label):
+def viz_masks(fignum,orig,rgb,seg,depth,label,bb_list):
     """
     img,depth,seg are images of the same size.
     visualizes depth masks for top NOBJ objects.
@@ -317,11 +317,17 @@ def viz_masks(fignum,rgb,seg,depth,label):
 
     #plt.close(fignum)
     plt.figure()
-    ims = [rgb,mim,depth,img]
+    ims = [orig,mim,img,depth,rgb]
+    ttls = ['Original', 'Segmented (Mean)', 'Segmented (Labels)', 'Depth', 'Rendered']
     for i in range(len(ims)):
-        plt.subplot(2,2,i+1)
+        plt.subplot(2,3,i+1)
         plt.imshow(ims[i])
+        plt.title(ttls[i])
+    plt.subplot(2,3,6)
+    viz_textbb(fignum, rgb, bb_list, alpha=1.0)
+    plt.title('Bounding Boxes')
     plt.show(block=False)
+    plt.tight_layout()
 
 def viz_regions(img,xyz,seg,planes,labels):
     """
@@ -347,9 +353,6 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
     bb_list : list of 2x4xn_i boundinb-box matrices
     """
     #plt.close(fignum)
-    plt.figure()
-    plt.imshow(text_im)
-    plt.figure()
     plt.imshow(text_im)
     #plt.hold(True)
     H,W = text_im.shape[:2]
@@ -360,9 +363,8 @@ def viz_textbb(fignum,text_im, bb_list,alpha=1.0):
             bb = bbs[:,:,j]
             bb = np.c_[bb,bb[:,0]]
             plt.plot(bb[0,:], bb[1,:], 'r', linewidth=2, alpha=alpha)
-    plt.gca().set_xlim([0,W-1])
-    plt.gca().set_ylim([H-1,0])
-    plt.show(block=False)
+    # plt.gca().set_xlim([0,W-1])
+    # plt.gca().set_ylim([H-1,0])
 
 class RendererV3(object):
 
@@ -687,8 +689,8 @@ class RendererV3(object):
                 idict['wordBB'] = self.char2wordBB(idict['charBB'].copy(), ' '.join(itext))
                 res.append(idict.copy())
                 if viz:
-                    viz_textbb(1,img, [idict['wordBB']], alpha=1.0)
-                    viz_masks(2,img,seg,depth,regions['label'])
+                    #viz_textbb(1,img, [idict['wordBB']], alpha=1.0)
+                    viz_masks(2,rgb,img,seg,depth,regions['label'],[idict['wordBB']])
                     # viz_regions(rgb.copy(),xyz,seg,regions['coeff'],regions['label'])
                     # if i < ninstance-1:
                     #     input(colorize(Color.BLUE,'continue?',True))
